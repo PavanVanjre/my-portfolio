@@ -8,6 +8,27 @@ import { memo, lazy, Suspense } from 'react';
 // Lazy load heavy components
 const AnimatedCube = lazy(() => import('./AnimatedCube'));
 
+interface SocialLink {
+  name: string;
+  url: string;
+  icon: string;
+}
+
+interface HeroButtons {
+  primary: string;
+  secondary: string;
+}
+
+interface HeroData {
+  greeting: string;
+  name: string;
+  title: string;
+  roles: string[];
+  description: string;
+  buttons: HeroButtons;
+  socialLinks: SocialLink[];
+}
+
 const iconMap = {
   Linkedin: Linkedin,
   Github: Github,
@@ -15,7 +36,7 @@ const iconMap = {
 };
 
 // Memoized social links component
-const SocialLinks = memo(({ heroData }: { heroData: any }) => {
+const SocialLinks = memo(({ heroData }: { heroData: HeroData }) => {
   return (
     <motion.div 
       className="flex-col gap-6 hidden md:flex"
@@ -25,7 +46,7 @@ const SocialLinks = memo(({ heroData }: { heroData: any }) => {
       role="navigation"
       aria-label="Social media links"
     >
-      {heroData.socialLinks.map((link: any, index: number) => {
+      {heroData.socialLinks.map((link: SocialLink, index: number) => {
         const IconComponent = iconMap[link.icon as keyof typeof iconMap];
         return (
           <a
@@ -48,7 +69,7 @@ const SocialLinks = memo(({ heroData }: { heroData: any }) => {
 SocialLinks.displayName = 'SocialLinks';
 
 // Memoized action buttons component
-const ActionButtons = memo(({ heroData }: { heroData: any }) => {
+const ActionButtons = memo(({ heroData }: { heroData: HeroData }) => {
   return (
     <motion.div
       className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start"
@@ -319,7 +340,7 @@ const Hero = memo(() => {
 
             {/* Social Icons */}
             <div className="flex gap-6" role="navigation" aria-label="Social media links">
-              {heroData.socialLinks.map((link: any, index: number) => {
+              {heroData.socialLinks.map((link: SocialLink, index: number) => {
                 const IconComponent = iconMap[link.icon as keyof typeof iconMap];
                 return (
                   <motion.a

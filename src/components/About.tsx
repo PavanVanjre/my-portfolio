@@ -110,13 +110,29 @@ export default function About() {
               {/* Animated Gradient Ring */}
               <div className="absolute inset-0 w-full h-full rounded-full border-8 border-transparent animate-spin-slow bg-gradient-to-tr from-primary via-secondary to-accent blur-2xl opacity-100" style={{ zIndex: 1 }} aria-hidden="true"></div>
               <div className="absolute inset-2 w-[88%] h-[88%] rounded-full border-2 border-primary/30 animate-glow" aria-hidden="true"></div>
-              <img
-                src="src/assets/project images/profile-pic.png"
-                alt="Profile picture of Pavan Vanjre Ravindranath"
-                className="relative w-56 h-56 md:w-56 md:h-56 lg:w-72 lg:h-72 rounded-full border-4 c shadow-2xl object-cover object-center aspect-square bg-background hover:scale-105 transition-transform duration-300"
-                style={{ zIndex: 2 }}
-                id="about-profile-image"
-              />
+              <picture>
+                <source srcSet="/images/profile-pic.webp" type="image/webp" />
+                <img
+                  src="/images/profile-pic.png"
+                  alt="Profile picture of Pavan Vanjre Ravindranath"
+                  className="relative w-56 h-56 md:w-56 md:h-56 lg:w-72 lg:h-72 rounded-full border-4 c shadow-2xl object-cover object-center aspect-square bg-background hover:scale-105 transition-transform duration-300"
+                  style={{ zIndex: 2 }}
+                  id="about-profile-image"
+                  loading="lazy"
+                  decoding="async"
+                  onError={(e) => {
+                    const target = e.currentTarget;
+                    // Try PNG fallback if WebP fails
+                    if (target.src.includes('.webp')) {
+                      target.src = target.src.replace('.webp', '.png');
+                    } else {
+                      // Final fallback to placeholder
+                      target.src = "/placeholder.svg";
+                    }
+                    target.onerror = null; // Prevent infinite loop
+                  }}
+                />
+              </picture>
             </div>
           </div>
         </div>

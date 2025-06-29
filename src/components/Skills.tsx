@@ -9,7 +9,13 @@ import Spinner from './Spinner';
 import { getSectionData } from '@/lib/data';
 import { useTheme } from '@/contexts/ThemeContext';
 
-const iconMap: { [key: string]: React.ComponentType<any> } = {
+interface Skill {
+  name: string;
+  icon: string;
+  color: string;
+}
+
+const iconMap: { [key: string]: React.ComponentType<{ style?: React.CSSProperties }> } = {
   SiReact,
   SiTypescript,
   SiNodedotjs,
@@ -39,7 +45,7 @@ const iconMap: { [key: string]: React.ComponentType<any> } = {
   FaJava,
 };
 
-const MarqueeRow = ({ skills, direction = 'left' }: { skills: any[], direction?: 'left' | 'right' }) => {
+const MarqueeRow = ({ skills, direction = 'left' }: { skills: Skill[], direction?: 'left' | 'right' }) => {
   const animationClass = direction === 'left' ? 'animate-marquee-left' : 'animate-marquee-right';
   const { theme } = useTheme();
 
