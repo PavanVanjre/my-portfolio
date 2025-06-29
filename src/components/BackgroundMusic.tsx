@@ -5,10 +5,11 @@ import { Volume2, VolumeX } from 'lucide-react';
 export default function BackgroundMusic({ className = '' }: { className?: string }) {
   const [isPlaying, setIsPlaying] = useState(false);
   const [hasInteracted, setHasInteracted] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
 
   // Use a royalty-free ambient music URL or local file
-  const musicUrl = "src/assets/BackgroundMusic/calm-space-music-312291.mp3"; 
+  const musicUrl = "/music/calm-space-music-312291.mp3";
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -17,12 +18,28 @@ export default function BackgroundMusic({ className = '' }: { className?: string
     audio.loop = true;
     audio.volume = 0.1; // Very low volume for background
 
+    // Handle audio loading
+    const handleCanPlay = () => {
+      setIsLoaded(true);
+    };
+
+    const handleError = (e: Event) => {
+      console.error('Audio loading error:', e);
+      setIsLoaded(false);
+    };
+
+    audio.addEventListener('canplay', handleCanPlay);
+    audio.addEventListener('error', handleError);
+
     // Auto-play after user interaction
     const handleUserInteraction = () => {
       if (!hasInteracted) {
         setHasInteracted(true);
-        if (isPlaying) {
-          audio.play().catch(console.error);
+        if (isPlaying && isLoaded) {
+          audio.play().catch((error) => {
+            console.error('Audio play error:', error);
+            setIsPlaying(false);
+          });
         }
       }
     };
@@ -31,23 +48,35 @@ export default function BackgroundMusic({ className = '' }: { className?: string
     document.addEventListener('keydown', handleUserInteraction);
 
     return () => {
+      audio.removeEventListener('canplay', handleCanPlay);
+      audio.removeEventListener('error', handleError);
       document.removeEventListener('click', handleUserInteraction);
       document.removeEventListener('keydown', handleUserInteraction);
     };
-  }, [isPlaying, hasInteracted]);
+  }, [isPlaying, hasInteracted, isLoaded]);
 
-  const toggleMusic = () => {
+  const toggleMusic = async () => {
     const audio = audioRef.current;
-    if (!audio) return;
+    if (!audio || !isLoaded) return;
 
-    if (isPlaying) {
-      audio.pause();
-    } else {
-      if (hasInteracted) {
-        audio.play().catch(console.error);
+    try {
+      if (isPlaying) {
+        audio.pause();
+        setIsPlaying(false);
+      } else {
+        if (hasInteracted) {
+          await audio.play();
+          setIsPlaying(true);
+        } else {
+          // First click - just set interaction flag
+          setHasInteracted(true);
+          setIsPlaying(true);
+        }
       }
+    } catch (error) {
+      console.error('Audio toggle error:', error);
+      setIsPlaying(false);
     }
-    setIsPlaying(!isPlaying);
   };
 
   return (
@@ -69,6 +98,8 @@ export default function BackgroundMusic({ className = '' }: { className?: string
           duration: 2,
           repeat: isPlaying ? Infinity : 0,
         }}
+        disabled={!isLoaded}
+        title={!isLoaded ? "Loading music..." : isPlaying ? "Pause music" : "Play music"}
       >
         {isPlaying ? (
           <Volume2 className="w-5 h-5 text-primary" />
