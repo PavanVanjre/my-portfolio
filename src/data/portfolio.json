@@ -269,7 +269,7 @@
         "title": "Transhipment Tracking System",
         "description": "a web application for real-time shipment tracking with secure authentication, dynamic dashboards, and interactive data visualizations and seamless user experience.",
         "tech": ["React", "Firebase", "Material-UI", "Python"],
-        "image": "/images/project1.png",
+        "image": "/images/project1.webp",
         "github": "https://github.com/PavanVanjre",
         "live": null
       },

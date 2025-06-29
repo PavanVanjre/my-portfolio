@@ -93,9 +93,19 @@ export default function Projects() {
                       loading="lazy"
                       decoding="async"
                       fetchPriority="low"
-                      onError={e => {
-                        e.currentTarget.onerror = null;
-                        e.currentTarget.src = "/placeholder.svg";
+                      onError={(e) => {
+                        const target = e.currentTarget;
+                        // First try PNG fallback if WebP fails
+                        if (target.src.includes('.webp')) {
+                          target.src = target.src.replace('.webp', '.png');
+                        } else if (target.src.includes('.png')) {
+                          // If PNG also fails, show placeholder
+                          target.src = "/placeholder.svg";
+                        } else {
+                          // Final fallback to placeholder
+                          target.src = "/placeholder.svg";
+                        }
+                        target.onerror = null; // Prevent infinite loop
                       }}
                     />
                   </picture>

@@ -302,6 +302,17 @@ const Hero = memo(() => {
                   loading="lazy"
                   decoding="async"
                   fetchPriority="high"
+                  onError={(e) => {
+                    const target = e.currentTarget;
+                    // Try PNG fallback if WebP fails
+                    if (target.src.includes('.webp')) {
+                      target.src = target.src.replace('.webp', '.png');
+                    } else {
+                      // Final fallback to placeholder
+                      target.src = "/placeholder.svg";
+                    }
+                    target.onerror = null; // Prevent infinite loop
+                  }}
                 />
               </picture>
             </div>
