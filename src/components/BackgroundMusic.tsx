@@ -8,7 +8,7 @@ export default function BackgroundMusic({ className = '' }: { className?: string
   const audioRef = useRef<HTMLAudioElement>(null);
 
   // Use a royalty-free ambient music URL or local file
-  const musicUrl = "https://www.soundjay.com/misc/sounds/bell-ringing-05.wav"; // Replace with actual ambient music
+  const musicUrl = "src/assets/BackgroundMusic/calm-space-music-312291.mp3"; 
 
   useEffect(() => {
     const audio = audioRef.current;

@@ -3,6 +3,10 @@ import { Github, Linkedin, Mail, Award, Briefcase, Code } from 'lucide-react';
 import { TypeAnimation } from 'react-type-animation';
 import { getSectionData } from '@/lib/data';
 import { useIsMobile } from '@/hooks/use-mobile';
+import { memo, lazy, Suspense } from 'react';
+
+// Lazy load heavy components
+const AnimatedCube = lazy(() => import('./AnimatedCube'));
 
 const iconMap = {
   Linkedin: Linkedin,
@@ -10,7 +14,78 @@ const iconMap = {
   Mail: Mail,
 };
 
-export default function Hero() {
+// Memoized social links component
+const SocialLinks = memo(({ heroData }: { heroData: any }) => {
+  return (
+    <motion.div 
+      className="flex-col gap-6 hidden md:flex"
+      initial={{ opacity: 0, x: -20 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.5, delay: 1.2 }}
+      role="navigation"
+      aria-label="Social media links"
+    >
+      {heroData.socialLinks.map((link: any, index: number) => {
+        const IconComponent = iconMap[link.icon as keyof typeof iconMap];
+        return (
+          <a
+            key={index}
+            href={link.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-muted-foreground hover:text-primary transition-colors duration-300"
+            aria-label={`Visit ${link.icon} profile`}
+            id={`social-link-${link.icon.toLowerCase()}`}
+          >
+            <IconComponent size={28} aria-hidden="true" />
+          </a>
+        );
+      })}
+    </motion.div>
+  );
+});
+
+SocialLinks.displayName = 'SocialLinks';
+
+// Memoized action buttons component
+const ActionButtons = memo(({ heroData }: { heroData: any }) => {
+  return (
+    <motion.div
+      className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start"
+      role="group"
+      aria-label="Action buttons"
+    >
+      <motion.button
+        whileHover={{ scale: 1.05, boxShadow: "0 10px 25px rgba(0,0,0,0.2)" }}
+        whileTap={{ scale: 0.95 }}
+        className="px-8 py-3 bg-primary text-primary-foreground rounded-lg font-semibold hover:bg-primary/90 transition-all duration-300"
+        onClick={() => {
+          const contactSection = document.querySelector('#contact');
+          if (contactSection) {
+            contactSection.scrollIntoView({ behavior: 'smooth' });
+          }
+        }}
+        id="contact-button"
+        aria-label={`${heroData.buttons.primary} - navigate to contact section`}
+      >
+        {heroData.buttons.primary}
+      </motion.button>
+      <motion.button
+        whileHover={{ scale: 1.05, borderColor: "hsl(var(--primary))", color: "hsl(var(--primary))" }}
+        whileTap={{ scale: 0.95 }}
+        className="px-8 py-3 border border-border rounded-lg font-semibold hover:bg-accent transition-all duration-300 text-foreground dark:text-primary"
+        id="resume-button"
+        aria-label={heroData.buttons.secondary}
+      >
+        {heroData.buttons.secondary}
+      </motion.button>
+    </motion.div>
+  );
+});
+
+ActionButtons.displayName = 'ActionButtons';
+
+const Hero = memo(() => {
   const heroData = getSectionData('hero');
   const aboutData = getSectionData('about');
   const isMobile = useIsMobile();
@@ -42,31 +117,7 @@ export default function Hero() {
     return (
       <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden px-4" role="banner" aria-label="Hero section">
         <div className="flex items-center gap-12">
-          <motion.div 
-            className="flex-col gap-6 hidden md:flex"
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 1.2 }}
-            role="navigation"
-            aria-label="Social media links"
-          >
-            {heroData.socialLinks.map((link, index) => {
-              const IconComponent = iconMap[link.icon as keyof typeof iconMap];
-              return (
-                <a
-                  key={index}
-                  href={link.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-muted-foreground hover:text-primary transition-colors duration-300"
-                  aria-label={`Visit ${link.icon} profile`}
-                  id={`social-link-${link.icon.toLowerCase()}`}
-                >
-                  <IconComponent size={28} aria-hidden="true" />
-                </a>
-              );
-            })}
-          </motion.div>
+          <SocialLinks heroData={heroData} />
 
           <motion.div
             variants={containerVariants}
@@ -94,7 +145,7 @@ export default function Hero() {
             <motion.div variants={itemVariants} className="mb-8 h-8 text-xl md:text-2xl text-muted-foreground" role="status" aria-live="polite">
               <span>{heroData.title} </span>
               <TypeAnimation
-                sequence={heroData.roles.flatMap(role => [role, 2000])}
+                sequence={heroData.roles.flatMap((role: string) => [role, 2000])}
                 wrapper="span"
                 speed={50}
                 className="text-primary font-semibold"
@@ -116,37 +167,7 @@ export default function Hero() {
               {heroData.description}
             </motion.p>
             
-            <motion.div
-              variants={itemVariants}
-              className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start"
-              role="group"
-              aria-label="Action buttons"
-            >
-              <motion.button
-                whileHover={{ scale: 1.05, boxShadow: "0 10px 25px rgba(0,0,0,0.2)" }}
-                whileTap={{ scale: 0.95 }}
-                className="px-8 py-3 bg-primary text-primary-foreground rounded-lg font-semibold hover:bg-primary/90 transition-all duration-300"
-                onClick={() => {
-                  const contactSection = document.querySelector('#contact');
-                  if (contactSection) {
-                    contactSection.scrollIntoView({ behavior: 'smooth' });
-                  }
-                }}
-                id="contact-button"
-                aria-label={`${heroData.buttons.primary} - navigate to contact section`}
-              >
-                {heroData.buttons.primary}
-              </motion.button>
-              <motion.button
-                whileHover={{ scale: 1.05, borderColor: "hsl(var(--primary))", color: "hsl(var(--primary))" }}
-                whileTap={{ scale: 0.95 }}
-                className="px-8 py-3 border border-border rounded-lg font-semibold hover:bg-accent transition-all duration-300 text-foreground dark:text-primary"
-                id="resume-button"
-                aria-label={heroData.buttons.secondary}
-              >
-                {heroData.buttons.secondary}
-              </motion.button>
-            </motion.div>
+            <ActionButtons heroData={heroData} />
           </motion.div>
         </div>
       </section>
@@ -186,7 +207,7 @@ export default function Hero() {
           <motion.div variants={itemVariants} className="mb-12 h-8 text-xl md:text-2xl text-muted-foreground" role="status" aria-live="polite">
             <span>{heroData.title} </span>
             <TypeAnimation
-              sequence={heroData.roles.flatMap(role => [role, 2000])}
+              sequence={heroData.roles.flatMap((role: string) => [role, 2000])}
               wrapper="span"
               speed={50}
               className="text-primary font-semibold"
@@ -230,7 +251,7 @@ export default function Hero() {
 
             {/* About content */}
             <div className="space-y-6" role="region" aria-label="About description">
-              {aboutData.content.map((paragraph, index) => (
+              {aboutData.content.map((paragraph: string, index: number) => (
                 <p key={index} className="text-lg text-muted-foreground leading-relaxed text-left" id={`about-paragraph-${index}`}>
                   {paragraph}
                 </p>
@@ -249,6 +270,9 @@ export default function Hero() {
               }}
               id="view-resume-button"
               aria-label="View resume"
+              onClick={() => {
+                window.open('/documents/resume.pdf', '_blank', 'noopener,noreferrer');
+              }}
             >
               View Resume
             </motion.button>
@@ -259,7 +283,7 @@ export default function Hero() {
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.7 }}
-            className="flex flex-col items-center space-y-8 flex-1 lg:flex-[2]"
+            className="flex flex-col items-center space-y-8 flex-1 lg:flex-[2] mt-8 lg:mt-12"
             role="complementary"
             aria-label="Profile image and social links"
           >
@@ -267,18 +291,24 @@ export default function Hero() {
             <div className="relative flex items-center justify-center">
               <div className="absolute inset-0 w-full h-full rounded-full border-8 border-transparent animate-spin-slow bg-gradient-to-tr from-primary via-secondary to-accent blur-2xl opacity-100" style={{ zIndex: 1 }} aria-hidden="true"></div>
               <div className="absolute inset-2 w-[88%] h-[88%] rounded-full border-2 border-primary/30 animate-glow" aria-hidden="true"></div>
-              <img
-                src="src/assets/project images/profile-pic.png"
-                alt="Profile picture of Pavan Vanjre Ravindranath"
-                className="relative w-72 h-72 lg:w-80 lg:h-80 rounded-full border-4 shadow-2xl object-cover object-center aspect-square bg-background hover:scale-105 transition-transform duration-300"
-                style={{ zIndex: 2 }}
-                id="profile-image"
-              />
+              <picture>
+                <source srcSet="src/assets/project images/profile-pic.webp" type="image/webp" />
+                <img
+                  src="src/assets/project images/profile-pic.png"
+                  alt="Profile picture of Pavan Vanjre Ravindranath"
+                  className="relative w-72 h-72 lg:w-80 lg:h-80 rounded-full border-4 shadow-2xl object-cover object-center aspect-square bg-background hover:scale-105 transition-transform duration-300"
+                  style={{ zIndex: 2 }}
+                  id="profile-image"
+                  loading="lazy"
+                  decoding="async"
+                  fetchPriority="high"
+                />
+              </picture>
             </div>
 
             {/* Social Icons */}
             <div className="flex gap-6" role="navigation" aria-label="Social media links">
-              {heroData.socialLinks.map((link, index) => {
+              {heroData.socialLinks.map((link: any, index: number) => {
                 const IconComponent = iconMap[link.icon as keyof typeof iconMap];
                 return (
                   <motion.a
@@ -302,4 +332,8 @@ export default function Hero() {
       </div>
     </section>
   );
-}
+});
+
+Hero.displayName = 'Hero';
+
+export default Hero;

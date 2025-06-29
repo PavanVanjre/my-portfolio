@@ -6,7 +6,6 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import { getSectionData } from '@/lib/data';
 import { useState } from 'react';
-import { Sampler } from '@react-three/drei';
 
 // Reusable GitHub Button Component
 const GitHubButton = ({ href, className = "" }: { href: string; className?: string }) => (
@@ -85,15 +84,21 @@ export default function Projects() {
                 id={`project-card-${index}`}
               >
                 <div className="aspect-video bg-muted overflow-hidden flex-shrink-0">
-                  <img
-                    src={project.image}
-                    alt={`Screenshot of ${project.title} project`}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                    onError={e => {
-                      e.currentTarget.onerror = null;
-                      e.currentTarget.src = "/placeholder.svg";
-                    }}
-                  />
+                  <picture>
+                    <source srcSet={project.image.replace(/\.(png|jpg|jpeg)$/i, '.webp')} type="image/webp" />
+                    <img
+                      src={project.image}
+                      alt={`Screenshot of ${project.title} project`}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      loading="lazy"
+                      decoding="async"
+                      fetchPriority="low"
+                      onError={e => {
+                        e.currentTarget.onerror = null;
+                        e.currentTarget.src = "/placeholder.svg";
+                      }}
+                    />
+                  </picture>
                 </div>
                 <div className="p-4 flex flex-col flex-1">
                   <h3 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors line-clamp-1" id={`project-title-${index}`}>

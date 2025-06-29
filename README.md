@@ -107,6 +107,13 @@ src/
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
+## Credits
+
+This project was developed with the assistance of:
+
+- **[LovableAI](https://lovable.ai/)** - AI-powered development assistance
+- **[Cursor AI](https://cursor.sh/)** - AI-enhanced code editor
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

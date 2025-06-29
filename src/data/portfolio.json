@@ -3,7 +3,12 @@
     "greeting": "👋 Welcome to my portfolio",
     "name": "Pavan Vanjre Ravindranath",
     "title": "Hi, I'm a",
-    "roles": ["Software Engineer", "Problem Solver","Continuous Learner", "Agile Thinker"],
+    "roles": [
+      "Software Engineer",
+      "Problem Solver",
+      "Continuous Learner",
+      "Agile Thinker"
+    ],
     "description": "Software Developer based in the United States with over three years of experience building scalable, high-performance web applications using modern technologies.",
     "buttons": {
       "primary": "Say Hello!",
@@ -29,10 +34,11 @@
   },
   "about": {
     "title": "About Me",
-    "subtitle": "MS in Computer Science (UNC Charlotte) | BE in Computer Science (SIT) | Passionate about automation, cloud, and scalable solutions",
+    "subtitle":null,
     "content": [
-      "As a passionate software engineer currently pursuing a Master's in Computer Science, I thrive on building robust, scalable, and efficient applications. My journey through roles at HashedIn by Deloitte and Apex Analytix has given me hands-on experience in the entire software development lifecycle.",
-      "I have a strong background in full-stack development with expertise in React, Python, and Java, complemented by a deep understanding of cloud and DevOps technologies like AWS, Docker, and Kubernetes. I'm driven by the challenge of solving complex problems, whether it's optimizing a database query, automating a deployment pipeline, or enhancing user engagement through thoughtful UI/UX."
+      "I’m a Software Engineer with a Master’s degree in Computer Science and strong industry experience in building scalable, full-stack applications. My journey through roles at HashedIn by Deloitte and Apex Analytix has given me hands-on exposure to the entire software development lifecycle.",
+      "My technical toolkit includes React, JavaScript, Python, and Java, along with cloud and DevOps technologies like AWS, Docker, and Kubernetes. I enjoy turning complex challenges into clean, performant solutions, whether it’s enhancing UX, optimizing backend performance, or streamlining CI/CD pipelines.",
+      "I’m passionate about crafting products that make a real impact, combining strong engineering principles with a user-focused mindset. Every project is an opportunity to learn, collaborate, and build something meaningful."
     ]
   },
   "skills": {
@@ -40,21 +46,41 @@
     "subtitle": "From front-end finesse to back-end power, here's the tech I use to build robust applications.",
     "items": [
       { "name": "React", "icon": "SiReact", "color": "text-cyan-400" },
-      { "name": "TypeScript", "icon": "SiTypescript", "color": "text-blue-500" },
+      {
+        "name": "TypeScript",
+        "icon": "SiTypescript",
+        "color": "text-blue-500"
+      },
       { "name": "Node.js", "icon": "SiNodedotjs", "color": "text-green-500" },
       { "name": "Python", "icon": "SiPython", "color": "text-yellow-500" },
       { "name": "Java", "icon": "FaJava", "color": "text-red-500" },
       { "name": "AWS", "icon": "SiAmazon", "color": "text-orange-500" },
       { "name": "Docker", "icon": "SiDocker", "color": "text-blue-500" },
-      { "name": "Kubernetes", "icon": "SiKubernetes", "color": "text-blue-600" },
+      {
+        "name": "Kubernetes",
+        "icon": "SiKubernetes",
+        "color": "text-blue-600"
+      },
       { "name": "GraphQL", "icon": "SiGraphql", "color": "text-pink-500" },
-      { "name": "Next.js", "icon": "SiNextdotjs", "color": "text-gray-700 dark:text-gray-300" },
+      {
+        "name": "Next.js",
+        "icon": "SiNextdotjs",
+        "color": "text-gray-700 dark:text-gray-300"
+      },
       { "name": "Redux", "icon": "SiRedux", "color": "text-purple-500" },
       { "name": "HTML5", "icon": "SiHtml5", "color": "text-orange-500" },
       { "name": "CSS3", "icon": "SiCss3", "color": "text-blue-500" },
-      { "name": "JavaScript", "icon": "SiJavascript", "color": "text-yellow-400" },
+      {
+        "name": "JavaScript",
+        "icon": "SiJavascript",
+        "color": "text-yellow-400"
+      },
       { "name": "MongoDB", "icon": "SiMongodb", "color": "text-green-500" },
-      { "name": "PostgreSQL", "icon": "SiPostgresql", "color": "text-blue-400" },
+      {
+        "name": "PostgreSQL",
+        "icon": "SiPostgresql",
+        "color": "text-blue-400"
+      },
       { "name": "MySQL", "icon": "SiMysql", "color": "text-blue-300" },
       { "name": "Redis", "icon": "SiRedis", "color": "text-red-500" },
       { "name": "Jenkins", "icon": "SiJenkins", "color": "text-gray-500" },
@@ -64,7 +90,11 @@
       { "name": "Angular", "icon": "SiAngular", "color": "text-red-500" },
       { "name": "Sass", "icon": "SiSass", "color": "text-pink-400" },
       { "name": "Gulp", "icon": "SiGulp", "color": "text-red-500" },
-      { "name": "Flask", "icon": "SiFlask", "color": "text-gray-700 dark:text-gray-300" },
+      {
+        "name": "Flask",
+        "icon": "SiFlask",
+        "color": "text-gray-700 dark:text-gray-300"
+      },
       { "name": "Django", "icon": "SiDjango", "color": "text-green-600" }
     ]
   },
@@ -82,7 +112,14 @@
           "Collaborated with the professor to improve course materials and ensure alignment with learning objectives",
           "Mentored students in debugging code and troubleshooting network-related issues"
         ],
-        "technologies": ["C++", "Operating System", "Computer Networking", "Linux", "VirtualBox", "Wireshark"],
+        "technologies": [
+          "C++",
+          "Operating System",
+          "Computer Networking",
+          "Linux",
+          "VirtualBox",
+          "Wireshark"
+        ],
         "year": "2025"
       },
       {
@@ -109,7 +146,13 @@
           "Optimized data retrieval processes, improving user experience and reducing retrieval time by 15%.",
           "Implemented fingerprint and Proof-of-Address capture feature to enhance eKYC accuracy and streamline onboarding compliance."
         ],
-        "technologies": ["React Native", "NextJS", "GraphQL", "Python", "Amplitude"],
+        "technologies": [
+          "React Native",
+          "NextJS",
+          "GraphQL",
+          "Python",
+          "Amplitude"
+        ],
         "year": "2023"
       },
       {
@@ -125,7 +168,14 @@
           "Introduced a responsive design feature, ensuring optimal functionality across all mobile and tablet devices",
           "Built Gulp tasks to auto-lint TypeScript with ESLint and Prettier, reducing lint errors by 70%."
         ],
-        "technologies": ["ReactJS", "Redux", "TypeScript", "Java", "AWS", "Gulp"],
+        "technologies": [
+          "ReactJS",
+          "Redux",
+          "TypeScript",
+          "Java",
+          "AWS",
+          "Gulp"
+        ],
         "year": "2022"
       },
       {
@@ -137,7 +187,14 @@
           "Created a custom CSS library to standardize styling, enhancing design consistency and cutting development time by 15%.",
           "Integrated Web Accessibility standards achieve WCAG 2.1 compliance, expanding access for over 12% of users with disabilities"
         ],
-        "technologies": ["HTML5", "CSS3", "JavaScript", "ReactJS", "Flask", "AWS"],
+        "technologies": [
+          "HTML5",
+          "CSS3",
+          "JavaScript",
+          "ReactJS",
+          "Flask",
+          "AWS"
+        ],
         "year": "2020"
       }
     ]
@@ -152,7 +209,12 @@
         "period": "Aug 2023 – May 2025",
         "location": "Charlotte, NC",
         "description": "GPA: 3.80. Key coursework included Data Structures and Algorithms, Databases Systems, Computer Networks, and Software Design.",
-        "courses": ["Data Structure and Algorithms Design", "Databases System", "Computer Networks", "Software Design and Implementation"],
+        "courses": [
+          "Data Structure and Algorithms Design",
+          "Databases System",
+          "Computer Networks",
+          "Software Design and Implementation"
+        ],
         "year": "2025"
       },
       {
@@ -161,7 +223,14 @@
         "period": "Aug 2016 – May 2020",
         "location": "Tumakuru, India",
         "description": "Key coursework included Advanced Data Structures, Java, Operating Systems, Machine Learning, and Object-Oriented Design.",
-        "courses": ["Advanced Data Structure", "Java", "Operating System", "Machine Learning", "Object Oriented Model Design", "Intro to Data Science"],
+        "courses": [
+          "Advanced Data Structure",
+          "Java",
+          "Operating System",
+          "Machine Learning",
+          "Object Oriented Model Design",
+          "Intro to Data Science"
+        ],
         "year": "2020"
       }
     ]
@@ -177,7 +246,7 @@
         "credentialId": "AWS-DCA-2024",
         "description": "Covers developing, deploying, and debugging cloud-based applications using AWS.",
         "skills": ["AWS", "Cloud", "Development", "DevOps"],
-        "link": "#",
+        "link": "https://www.credly.com/badges/9392ecf4-7132-43b0-904a-e740152f5364",
         "color": "from-orange-400 to-amber-600"
       },
       {
@@ -187,7 +256,7 @@
         "credentialId": "AWS-DE-2024",
         "description": "Focuses on the AWS services and skills required for data engineering roles.",
         "skills": ["AWS", "Data Engineering", "ETL", "Analytics"],
-        "link": "#",
+        "link": "https://www.credly.com/badges/1c5c9040-710a-4093-b329-7e411d5fae64",
         "color": "from-blue-400 to-sky-600"
       }
     ]
@@ -196,8 +265,7 @@
     "title": "Projects Experiences",
     "subtitle": "A showcase of my recent work and personal projects",
     "items": [
-     
-      { 
+      {
         "title": "Transhipment Tracking System",
         "description": "a web application for real-time shipment tracking with secure authentication, dynamic dashboards, and interactive data visualizations and seamless user experience.",
         "tech": ["React", "Firebase", "Material-UI", "Python"],
@@ -205,10 +273,17 @@
         "github": "https://github.com/PavanVanjre",
         "live": null
       },
-      { 
+      {
         "title": "Crop Prediction System",
         "description": "Web applicaiton that predicts the crop based on the soil, water and weather conditions.",
-        "tech": ["React", "Python", "TensorFlow", "Pandas","Scikit-learn","keras"],
+        "tech": [
+          "React",
+          "Python",
+          "TensorFlow",
+          "Pandas",
+          "Scikit-learn",
+          "keras"
+        ],
         "image": "src/assets/project images/project2.png",
         "github": "https://github.com/PavanVanjre",
         "live": null
@@ -248,12 +323,17 @@
       {
         "title": "World Climate Data Analysis Dashboard",
         "description": "Interactive data visualization project built with Observable and D3.js for exploring and analyzing datasets with reactive JavaScript notebooks.",
-        "tech": ["Observable", "D3.js", "JavaScript", "Data Visualization", "Interactive Dashboards"],
+        "tech": [
+          "Observable",
+          "D3.js",
+          "JavaScript",
+          "Data Visualization",
+          "Interactive Dashboards"
+        ],
         "image": "src/assets/project images/project6.png",
         "github": null,
         "live": "https://observablehq.com/d/8eb10c1beecd4ebe"
       }
-     
     ]
   },
   "contact": {
@@ -303,4 +383,4 @@
       "submit": "Send Message"
     }
   }
-} 
+}
