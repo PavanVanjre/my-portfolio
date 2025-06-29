@@ -1,0 +1,306 @@
+{
+  "hero": {
+    "greeting": "👋 Welcome to my portfolio",
+    "name": "Pavan Vanjre Ravindranath",
+    "title": "Hi, I'm a",
+    "roles": ["Software Engineer", "Problem Solver","Continuous Learner", "Agile Thinker"],
+    "description": "Software Developer based in the United States with over three years of experience building scalable, high-performance web applications using modern technologies.",
+    "buttons": {
+      "primary": "Say Hello!",
+      "secondary": "View Resume"
+    },
+    "socialLinks": [
+      {
+        "name": "LinkedIn",
+        "url": "https://www.linkedin.com/in/pavan-v-r/",
+        "icon": "Linkedin"
+      },
+      {
+        "name": "GitHub",
+        "url": "https://github.com/PavanVanjre",
+        "icon": "Github"
+      },
+      {
+        "name": "Email",
+        "url": "mailto:pavan.vanjre98@gmail.com",
+        "icon": "Mail"
+      }
+    ]
+  },
+  "about": {
+    "title": "About Me",
+    "subtitle": "MS in Computer Science (UNC Charlotte) | BE in Computer Science (SIT) | Passionate about automation, cloud, and scalable solutions",
+    "content": [
+      "As a passionate software engineer currently pursuing a Master's in Computer Science, I thrive on building robust, scalable, and efficient applications. My journey through roles at HashedIn by Deloitte and Apex Analytix has given me hands-on experience in the entire software development lifecycle.",
+      "I have a strong background in full-stack development with expertise in React, Python, and Java, complemented by a deep understanding of cloud and DevOps technologies like AWS, Docker, and Kubernetes. I'm driven by the challenge of solving complex problems, whether it's optimizing a database query, automating a deployment pipeline, or enhancing user engagement through thoughtful UI/UX."
+    ]
+  },
+  "skills": {
+    "title": "Technologies I Master",
+    "subtitle": "From front-end finesse to back-end power, here's the tech I use to build robust applications.",
+    "items": [
+      { "name": "React", "icon": "SiReact", "color": "text-cyan-400" },
+      { "name": "TypeScript", "icon": "SiTypescript", "color": "text-blue-500" },
+      { "name": "Node.js", "icon": "SiNodedotjs", "color": "text-green-500" },
+      { "name": "Python", "icon": "SiPython", "color": "text-yellow-500" },
+      { "name": "Java", "icon": "FaJava", "color": "text-red-500" },
+      { "name": "AWS", "icon": "SiAmazon", "color": "text-orange-500" },
+      { "name": "Docker", "icon": "SiDocker", "color": "text-blue-500" },
+      { "name": "Kubernetes", "icon": "SiKubernetes", "color": "text-blue-600" },
+      { "name": "GraphQL", "icon": "SiGraphql", "color": "text-pink-500" },
+      { "name": "Next.js", "icon": "SiNextdotjs", "color": "text-gray-700 dark:text-gray-300" },
+      { "name": "Redux", "icon": "SiRedux", "color": "text-purple-500" },
+      { "name": "HTML5", "icon": "SiHtml5", "color": "text-orange-500" },
+      { "name": "CSS3", "icon": "SiCss3", "color": "text-blue-500" },
+      { "name": "JavaScript", "icon": "SiJavascript", "color": "text-yellow-400" },
+      { "name": "MongoDB", "icon": "SiMongodb", "color": "text-green-500" },
+      { "name": "PostgreSQL", "icon": "SiPostgresql", "color": "text-blue-400" },
+      { "name": "MySQL", "icon": "SiMysql", "color": "text-blue-300" },
+      { "name": "Redis", "icon": "SiRedis", "color": "text-red-500" },
+      { "name": "Jenkins", "icon": "SiJenkins", "color": "text-gray-500" },
+      { "name": "Git", "icon": "SiGit", "color": "text-orange-500" },
+      { "name": "Figma", "icon": "SiFigma", "color": "text-pink-500" },
+      { "name": "Jira", "icon": "SiJira", "color": "text-blue-500" },
+      { "name": "Angular", "icon": "SiAngular", "color": "text-red-500" },
+      { "name": "Sass", "icon": "SiSass", "color": "text-pink-400" },
+      { "name": "Gulp", "icon": "SiGulp", "color": "text-red-500" },
+      { "name": "Flask", "icon": "SiFlask", "color": "text-gray-700 dark:text-gray-300" },
+      { "name": "Django", "icon": "SiDjango", "color": "text-green-600" }
+    ]
+  },
+  "experience": {
+    "title": "My Journey",
+    "items": [
+      {
+        "title": "Graduate Teaching Assistant",
+        "company": "University of North Carolina at Charlotte",
+        "period": "Jan 2025 – May 2025",
+        "description": [
+          "Provided one-on-one and group support to students, clarifying complex concepts like TCP/IP, multithreading, and virtual memory",
+          "Designed and graded assignments, labs, and quizzes to assess students' understanding of operating systems and networking fundamentals",
+          "Conducted hands-on lab sessions to teach practical skills in Linux system administration, shell scripting, and network configuration",
+          "Collaborated with the professor to improve course materials and ensure alignment with learning objectives",
+          "Mentored students in debugging code and troubleshooting network-related issues"
+        ],
+        "technologies": ["C++", "Operating System", "Computer Networking", "Linux", "VirtualBox", "Wireshark"],
+        "year": "2025"
+      },
+      {
+        "title": "Automation Developer Intern",
+        "company": "Apex Analytix",
+        "period": "May 2024 – Aug 2024",
+        "description": [
+          "Built a CI/CD pipeline with Azure DevOps, reducing deployment time by 40% via automated containerization and Kubernetes.",
+          "Designed and developed an automation bot using UiPath for scheduling meetings, reducing manual overhead by 20%.",
+          "Modernized a legacy project by containerizing it and deploying it on a Kubernetes cluster, improving scalability."
+        ],
+        "technologies": ["Docker", "Kubernetes", "Azure DevOps", "UiPath"],
+        "year": "2024"
+      },
+      {
+        "title": "Software Engineer II",
+        "company": "HashedIn by Deloitte",
+        "period": "Aug 2022 – Aug 2023",
+        "description": [
+          "Led Agile sprints, improving project delivery speed by 20% while maintaining a high standard of code quality and client satisfaction.",
+          "Analyzed Amplitude logs, identifying user drop-off points, implemented innovative solutions that increased engagement by 15%.",
+          "Developed a proof of concept to consolidate payment information from multiple iFrames into a single page.",
+          "Resolved critical checkmarx issues within a legacy codebase, resulting in an impressive 10% improvement in risk score.",
+          "Optimized data retrieval processes, improving user experience and reducing retrieval time by 15%.",
+          "Implemented fingerprint and Proof-of-Address capture feature to enhance eKYC accuracy and streamline onboarding compliance."
+        ],
+        "technologies": ["React Native", "NextJS", "GraphQL", "Python", "Amplitude"],
+        "year": "2023"
+      },
+      {
+        "title": "Software Engineer I",
+        "company": "HashedIn by Deloitte",
+        "period": "Oct 2020 – July 2022",
+        "description": [
+          "Optimized how the application managed its database, reducing query times by 40% and decreasing server load by 25%.",
+          "Collaborated with design team on Figma to elevate the application's UI/UX, achieving significant enhancements in user experience.",
+          "Designed a custom sorting algorithm to efficiently process large, unstructured datasets, improving data processing speed by 30%.",
+          "Developed RESTful APIs, ensuring seamless data formatting and integration across distributed computing environments.",
+          "Designed a multi-language content display system tailored to user country, improving content management and user experience.",
+          "Introduced a responsive design feature, ensuring optimal functionality across all mobile and tablet devices",
+          "Built Gulp tasks to auto-lint TypeScript with ESLint and Prettier, reducing lint errors by 70%."
+        ],
+        "technologies": ["ReactJS", "Redux", "TypeScript", "Java", "AWS", "Gulp"],
+        "year": "2022"
+      },
+      {
+        "title": "Software Engineer Intern",
+        "company": "HashedIn by Deloitte",
+        "period": "Feb 2020 – Sep 2020",
+        "description": [
+          "Developed unit test cases for React components using Jest, increasing test coverage by 45% and reducing defects by 20%.",
+          "Created a custom CSS library to standardize styling, enhancing design consistency and cutting development time by 15%.",
+          "Integrated Web Accessibility standards achieve WCAG 2.1 compliance, expanding access for over 12% of users with disabilities"
+        ],
+        "technologies": ["HTML5", "CSS3", "JavaScript", "ReactJS", "Flask", "AWS"],
+        "year": "2020"
+      }
+    ]
+  },
+  "education": {
+    "title": "Education",
+    "subtitle": "My academic journey and learning experiences",
+    "items": [
+      {
+        "degree": "Master of Science in Computer Science",
+        "school": "UNC Charlotte",
+        "period": "Aug 2023 – May 2025",
+        "location": "Charlotte, NC",
+        "description": "GPA: 3.80. Key coursework included Data Structures and Algorithms, Databases Systems, Computer Networks, and Software Design.",
+        "courses": ["Data Structure and Algorithms Design", "Databases System", "Computer Networks", "Software Design and Implementation"],
+        "year": "2025"
+      },
+      {
+        "degree": "Bachelor of Engineering in Computer Science",
+        "school": "Siddaganga Institute of Technology",
+        "period": "Aug 2016 – May 2020",
+        "location": "Tumakuru, India",
+        "description": "Key coursework included Advanced Data Structures, Java, Operating Systems, Machine Learning, and Object-Oriented Design.",
+        "courses": ["Advanced Data Structure", "Java", "Operating System", "Machine Learning", "Object Oriented Model Design", "Intro to Data Science"],
+        "year": "2020"
+      }
+    ]
+  },
+  "certifications": {
+    "title": "Certifications",
+    "subtitle": "Professional certifications and achievements that validate my expertise",
+    "items": [
+      {
+        "title": "AWS Certified Developer - Associate",
+        "issuer": "Amazon Web Services",
+        "date": "Oct 2024 – Oct 2027",
+        "credentialId": "AWS-DCA-2024",
+        "description": "Covers developing, deploying, and debugging cloud-based applications using AWS.",
+        "skills": ["AWS", "Cloud", "Development", "DevOps"],
+        "link": "#",
+        "color": "from-orange-400 to-amber-600"
+      },
+      {
+        "title": "AWS Academy Data Engineering",
+        "issuer": "Amazon Web Services",
+        "date": "Dec 2024 – Dec 2027",
+        "credentialId": "AWS-DE-2024",
+        "description": "Focuses on the AWS services and skills required for data engineering roles.",
+        "skills": ["AWS", "Data Engineering", "ETL", "Analytics"],
+        "link": "#",
+        "color": "from-blue-400 to-sky-600"
+      }
+    ]
+  },
+  "projects": {
+    "title": "Projects Experiences",
+    "subtitle": "A showcase of my recent work and personal projects",
+    "items": [
+     
+      { 
+        "title": "Transhipment Tracking System",
+        "description": "a web application for real-time shipment tracking with secure authentication, dynamic dashboards, and interactive data visualizations and seamless user experience.",
+        "tech": ["React", "Firebase", "Material-UI", "Python"],
+        "image": "src/assets/project images/project1.png",
+        "github": "https://github.com/PavanVanjre",
+        "live": null
+      },
+      { 
+        "title": "Crop Prediction System",
+        "description": "Web applicaiton that predicts the crop based on the soil, water and weather conditions.",
+        "tech": ["React", "Python", "TensorFlow", "Pandas","Scikit-learn","keras"],
+        "image": "src/assets/project images/project2.png",
+        "github": "https://github.com/PavanVanjre",
+        "live": null
+      },
+      {
+        "title": "Shortest Paths in a Network",
+        "description": "Java implementation of Dijkstra's Algorithm with dynamic graph updates and reachable node detection.",
+        "tech": ["Java", "Dijkstra's Algorithm", "Priority Queue"],
+        "image": "src/assets/project images/project3.png",
+        "github": "https://github.com/PavanVanjre/ShortestPath",
+        "live": null
+      },
+      {
+        "title": "Car Crash Analysis in USA",
+        "description": "Interactive D3.js visualization analyzing fatal car crash data with spatial maps, temporal trends, and hotspot identification across US states.",
+        "tech": ["D3.js", "JavaScript", "Data Visualization", "HTML/CSS"],
+        "image": "src/assets/project images/project4.png",
+        "github": "https://github.com/PavanVanjre/Car-Crashes-visualizations",
+        "live": null
+      },
+      {
+        "title": "Climatics: Analysis of Climate Change",
+        "description": "Interactive D3.js dashboard analyzing climate change impacts on global temperatures, emissions, and seasonal variations with geo-maps.",
+        "tech": ["D3.js", "JavaScript", "Data Visualization", "HTML/CSS"],
+        "image": "src/assets/project images/project5.png",
+        "github": "https://github.com/PavanVanjre/climatics",
+        "live": null
+      },
+      {
+        "title": "SPECTRE: Visual Speech-Aware 3D Facial Expression Reconstruction",
+        "description": "PyTorch-based method for 3D facial expression reconstruction from videos, preserving speech perception in talking head models.",
+        "tech": ["PyTorch", "scikit_image", "Deep Learning", "Python"],
+        "image": "src/assets/project images/project7.png",
+        "github": "https://github.com/PavanVanjre/spectre",
+        "live": null
+      },
+      {
+        "title": "World Climate Data Analysis Dashboard",
+        "description": "Interactive data visualization project built with Observable and D3.js for exploring and analyzing datasets with reactive JavaScript notebooks.",
+        "tech": ["Observable", "D3.js", "JavaScript", "Data Visualization", "Interactive Dashboards"],
+        "image": "src/assets/project images/project6.png",
+        "github": null,
+        "live": "https://observablehq.com/d/8eb10c1beecd4ebe"
+      }
+     
+    ]
+  },
+  "contact": {
+    "title": "Get In Touch",
+    "subtitle": "I'm always open to discussing new opportunities and interesting projects",
+    "heading": "Let's Connect",
+    "description": "Whether you have a project in mind, want to collaborate, or just want to say hello, I'd love to hear from you. Feel free to reach out through any of the channels below.",
+    "contactInfo": [
+      {
+        "type": "Email",
+        "value": "pavan.vanjre98@gmail.com",
+        "link": "mailto:pavan.vanjre98@gmail.com",
+        "icon": "📧"
+      },
+      {
+        "type": "LinkedIn",
+        "value": "linkedin.com/in/pavan-v-r",
+        "link": "https://linkedin.com/in/pavan-v-r/",
+        "icon": "💼"
+      },
+      {
+        "type": "GitHub",
+        "value": "github.com/PavanVanjre",
+        "link": "https://github.com/PavanVanjre",
+        "icon": "💻"
+      },
+      {
+        "type": "Phone",
+        "value": "+1 (704)-361-1764",
+        "link": null,
+        "icon": "📱"
+      }
+    ],
+    "form": {
+      "name": {
+        "label": "Name",
+        "placeholder": "Your name"
+      },
+      "email": {
+        "label": "Email",
+        "placeholder": "your.email@example.com"
+      },
+      "message": {
+        "label": "Message",
+        "placeholder": "Tell me about your project or just say hello!"
+      },
+      "submit": "Send Message"
+    }
+  }
+} 

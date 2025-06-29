@@ -1,0 +1,232 @@
+import { motion } from 'framer-motion';
+import { Github, ExternalLink, ChevronDown, ChevronUp } from 'lucide-react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import { getSectionData } from '@/lib/data';
+import { useState } from 'react';
+import { Sampler } from '@react-three/drei';
+
+// Reusable GitHub Button Component
+const GitHubButton = ({ href, className = "" }: { href: string; className?: string }) => (
+  <motion.a
+    href={href}
+    target="_blank"
+    rel="noopener noreferrer"
+    whileHover={{ scale: 1.1 }}
+    whileTap={{ scale: 0.95 }}
+    className={`flex items-center space-x-2 p-2 bg-primary/10 hover:bg-primary/20 rounded-lg transition-colors group/btn ${className}`}
+  >
+    <Github className="w-4 h-4 text-primary group-hover/btn:text-primary/80" />
+    <span className="text-primary text-sm font-medium">View on GitHub</span>
+  </motion.a>
+);
+
+export default function Projects() {
+  const projectsData = getSectionData('projects');
+
+  return (
+    <section id="projects" className="py-20 bg-muted/30">
+      <div className="text-center mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+        >
+          <h2 className="text-4xl lg:text-5xl font-bold mb-6">
+            {projectsData.title.split(' ')[0]} <span className="gradient-text">{projectsData.title.split(' ')[1]}</span>
+          </h2>
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            {projectsData.subtitle}
+          </p>
+        </motion.div>
+      </div>
+
+      {/* Swiper Carousel for Projects */}
+      <Swiper
+        modules={[Navigation]}
+        navigation
+        spaceBetween={5}
+        slidesPerView={1.1}
+        breakpoints={{
+          640: { slidesPerView: 2.1, spaceBetween: 16 },
+          768: { slidesPerView: 2.5, spaceBetween: 24 },
+          1024: { slidesPerView: 2.8, spaceBetween: 32 },
+          1440: { slidesPerView: 4.1, spaceBetween: 40 },
+        }}
+        className="!overflow-visible projects-swiper"
+        style={{ paddingLeft: 0, paddingRight: 0 }}
+      >
+        {projectsData.items.map((project, index) => {
+          const [showAllTech, setShowAllTech] = useState(false);
+          const techToShow = showAllTech ? project.tech : project.tech.slice(0, 6);
+          const hasMoreTech = project.tech.length > 6;
+
+          return (
+            <SwiperSlide key={project.title} className="flex justify-center">
+              <motion.div
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                whileHover={{
+                  y: -5,
+                  boxShadow: "0 20px 40px rgba(139, 92, 246, 0.3)"
+                }}
+                className="bg-card/80 backdrop-blur-sm border border-primary/20 rounded-xl overflow-hidden hover:shadow-2xl transition-all duration-300 group min-w-[300px] max-w-xs sm:min-w-[360px] sm:max-w-sm h-[520px] flex flex-col"
+              >
+                <div className="aspect-video bg-muted overflow-hidden flex-shrink-0">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    onError={e => {
+                      e.currentTarget.onerror = null;
+                      e.currentTarget.src = "/placeholder.svg";
+                    }}
+                  />
+                </div>
+                <div className="p-4 flex flex-col flex-1">
+                  <h3 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors line-clamp-1">
+                    {project.title}
+                  </h3>
+                  <p className="text-muted-foreground mb-2 text-sm leading-relaxed line-clamp-3 flex-1">
+                    {project.description}
+                  </p>
+                  <div className="mb-4 flex-shrink-0">
+                    <div className="flex flex-wrap gap-1 mb-2">
+                      {techToShow.map((tech) => (
+                        <span
+                          key={tech}
+                          className="px-2 py-1 bg-primary/10 text-primary text-xs rounded-full"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                    {hasMoreTech && (
+                      <button
+                        onClick={() => setShowAllTech(!showAllTech)}
+                        className="text-primary text-xs hover:text-primary/80 transition-colors flex items-center gap-1"
+                      >
+                        {showAllTech ? (
+                          <>
+                            <ChevronUp className="w-3 h-3" />
+                            Show less
+                          </>
+                        ) : (
+                          <>
+                            <ChevronDown className="w-3 h-3" />
+                            Show more ({project.tech.length - 6} more)
+                          </>
+                        )}
+                      </button>
+                    )}
+                  </div>
+                  <div className="flex items-center justify-between flex-shrink-0">
+                    {project.live && project.github ? (
+                      // Both live and GitHub exist - corners
+                      <>
+                        <GitHubButton href={project.github} />
+                        <motion.a
+                          href={project.live}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          whileHover={{ scale: 1.1 }}
+                          whileTap={{ scale: 0.95 }}
+                          className="flex items-center space-x-2 p-2 bg-primary/10 hover:bg-primary/20 rounded-lg transition-colors group/btn"
+                        >
+                          <ExternalLink className="w-4 h-4 text-primary group-hover/btn:text-primary/80" />
+                          <span className="text-primary text-sm font-medium">Live</span>
+                        </motion.a>
+                      </>
+                    ) : project.github ? (
+                      // Only GitHub exists - center it
+                      <div className="flex justify-center w-full">
+                        <GitHubButton href={project.github} />
+                      </div>
+                    ) : project.live ? (
+                      // Only live link exists - center it
+                      <div className="flex justify-center w-full">
+                        <motion.a
+                          href={project.live}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          whileHover={{ scale: 1.1 }}
+                          whileTap={{ scale: 0.95 }}
+                          className="flex items-center space-x-2 p-2 bg-primary/10 hover:bg-primary/20 rounded-lg transition-colors group/btn"
+                        >
+                          <ExternalLink className="w-4 h-4 text-primary group-hover/btn:text-primary/80" />
+                          <span className="text-primary text-sm font-medium">Live</span>
+                        </motion.a>
+                      </div>
+                    ) : (
+                      // No links exist - display nothing
+                      <div></div>
+                    )}
+                  </div>
+                </div>
+              </motion.div>
+            </SwiperSlide>
+          );
+        })}
+      </Swiper>
+    </section>
+  );
+}
+
+/* Add this to your global CSS (e.g., index.css) if you don't have the Tailwind scrollbar plugin: */
+/*
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+*/
+
+
+// project json Sampler 
+// [ {
+//   "title": "Weather Dashboard",
+//   "description": "Responsive weather dashboard with beautiful data visualizations.",
+//   "tech": ["React", "TypeScript", "Chart.js", "OpenWeather API"],
+//   "image": "/placeholder.svg",
+//   "github": "#",
+//   "live": null
+// },
+// {
+//   "title": "Social Media Analytics",
+//   "description": "Data analysis tool with interactive charts and automated reporting.",
+//   "tech": ["Python", "Django", "React", "D3.js"],
+//   "image": "/placeholder.svg",
+//   "github": "#",
+//   "live": null
+// },
+// {
+//   "title": "E-Commerce Platform",
+//   "description": "A full-stack e-commerce solution with React, Node.js, and PostgreSQL.",
+//   "tech": ["React", "Node.js", "PostgreSQL", "Stripe"],
+//   "image": "/placeholder.svg",
+//   "github": "https://github.com/PavanVanjre",
+//   "live": null
+// },
+// {
+//   "title": "Portfolio Website",
+//   "description": "Personal portfolio with 3D animations and modern design.",
+//   "tech": ["React", "Three.js", "Framer Motion", "Tailwind"],
+//   "image": "/placeholder.svg",
+//   "github": "#",
+//   "live": null
+// },
+// {
+//   "title": "Chat Application",
+//   "description": "Real-time chat app with voice/video calling capabilities.",
+//   "tech": ["React", "WebRTC", "Socket.io", "Express"],
+//   "image": "/placeholder.svg",
+//   "github": "#",
+//   "live": null
+// }]
