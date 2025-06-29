@@ -36,9 +36,9 @@
     "title": "About Me",
     "subtitle":null,
     "content": [
-      "I’m a Software Engineer with a Master’s degree in Computer Science and strong industry experience in building scalable, full-stack applications. My journey through roles at HashedIn by Deloitte and Apex Analytix has given me hands-on exposure to the entire software development lifecycle.",
-      "My technical toolkit includes React, JavaScript, Python, and Java, along with cloud and DevOps technologies like AWS, Docker, and Kubernetes. I enjoy turning complex challenges into clean, performant solutions, whether it’s enhancing UX, optimizing backend performance, or streamlining CI/CD pipelines.",
-      "I’m passionate about crafting products that make a real impact, combining strong engineering principles with a user-focused mindset. Every project is an opportunity to learn, collaborate, and build something meaningful."
+      "I'm a Software Engineer with a Master's degree in Computer Science and strong industry experience in building scalable, full-stack applications. My journey through roles at HashedIn by Deloitte and Apex Analytix has given me hands-on exposure to the entire software development lifecycle.",
+      "My technical toolkit includes React, JavaScript, Python, and Java, along with cloud and DevOps technologies like AWS, Docker, and Kubernetes. I enjoy turning complex challenges into clean, performant solutions, whether it's enhancing UX, optimizing backend performance, or streamlining CI/CD pipelines.",
+      "I'm passionate about crafting products that make a real impact, combining strong engineering principles with a user-focused mindset. Every project is an opportunity to learn, collaborate, and build something meaningful."
     ]
   },
   "skills": {
@@ -269,7 +269,7 @@
         "title": "Transhipment Tracking System",
         "description": "a web application for real-time shipment tracking with secure authentication, dynamic dashboards, and interactive data visualizations and seamless user experience.",
         "tech": ["React", "Firebase", "Material-UI", "Python"],
-        "image": "src/assets/project images/project1.png",
+        "image": "/images/project1.png",
         "github": "https://github.com/PavanVanjre",
         "live": null
       },
@@ -284,7 +284,7 @@
           "Scikit-learn",
           "keras"
         ],
-        "image": "src/assets/project images/project2.png",
+        "image": "/images/project2.png",
         "github": "https://github.com/PavanVanjre",
         "live": null
       },
@@ -292,7 +292,7 @@
         "title": "Shortest Paths in a Network",
         "description": "Java implementation of Dijkstra's Algorithm with dynamic graph updates and reachable node detection.",
         "tech": ["Java", "Dijkstra's Algorithm", "Priority Queue"],
-        "image": "src/assets/project images/project3.png",
+        "image": "/images/Project3.png",
         "github": "https://github.com/PavanVanjre/ShortestPath",
         "live": null
       },
@@ -300,7 +300,7 @@
         "title": "Car Crash Analysis in USA",
         "description": "Interactive D3.js visualization analyzing fatal car crash data with spatial maps, temporal trends, and hotspot identification across US states.",
         "tech": ["D3.js", "JavaScript", "Data Visualization", "HTML/CSS"],
-        "image": "src/assets/project images/project4.png",
+        "image": "/images/Project4.png",
         "github": "https://github.com/PavanVanjre/Car-Crashes-visualizations",
         "live": null
       },
@@ -308,7 +308,7 @@
         "title": "Climatics: Analysis of Climate Change",
         "description": "Interactive D3.js dashboard analyzing climate change impacts on global temperatures, emissions, and seasonal variations with geo-maps.",
         "tech": ["D3.js", "JavaScript", "Data Visualization", "HTML/CSS"],
-        "image": "src/assets/project images/project5.png",
+        "image": "/images/project5.png",
         "github": "https://github.com/PavanVanjre/climatics",
         "live": null
       },
@@ -316,7 +316,7 @@
         "title": "SPECTRE: Visual Speech-Aware 3D Facial Expression Reconstruction",
         "description": "PyTorch-based method for 3D facial expression reconstruction from videos, preserving speech perception in talking head models.",
         "tech": ["PyTorch", "scikit_image", "Deep Learning", "Python"],
-        "image": "src/assets/project images/project7.png",
+        "image": "/images/Project7.png",
         "github": "https://github.com/PavanVanjre/spectre",
         "live": null
       },
@@ -330,7 +330,7 @@
           "Data Visualization",
           "Interactive Dashboards"
         ],
-        "image": "src/assets/project images/project6.png",
+        "image": "/images/Project6.png",
         "github": null,
         "live": "https://observablehq.com/d/8eb10c1beecd4ebe"
       }

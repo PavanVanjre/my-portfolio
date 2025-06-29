@@ -292,9 +292,9 @@ const Hero = memo(() => {
               <div className="absolute inset-0 w-full h-full rounded-full border-8 border-transparent animate-spin-slow bg-gradient-to-tr from-primary via-secondary to-accent blur-2xl opacity-100" style={{ zIndex: 1 }} aria-hidden="true"></div>
               <div className="absolute inset-2 w-[88%] h-[88%] rounded-full border-2 border-primary/30 animate-glow" aria-hidden="true"></div>
               <picture>
-                <source srcSet="src/assets/project images/profile-pic.webp" type="image/webp" />
+                <source srcSet="/images/profile-pic.webp" type="image/webp" />
                 <img
-                  src="src/assets/project images/profile-pic.png"
+                  src="/images/profile-pic.png"
                   alt="Profile picture of Pavan Vanjre Ravindranath"
                   className="relative w-72 h-72 lg:w-80 lg:h-80 rounded-full border-4 shadow-2xl object-cover object-center aspect-square bg-background hover:scale-105 transition-transform duration-300"
                   style={{ zIndex: 2 }}
