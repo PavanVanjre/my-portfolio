@@ -6,9 +6,9 @@ export default function Education() {
   const educationData = getSectionData('education');
 
   return (
-    <section className="py-20 bg-gradient-to-br from-background via-secondary/5 to-accent/10 relative overflow-hidden">
+    <section className="py-20 bg-gradient-to-br from-background via-secondary/5 to-accent/10 relative overflow-hidden" id="education" role="region" aria-label="Education section">
       {/* Animated background elements */}
-      <div className="absolute inset-0 pointer-events-none">
+      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
         <div className="absolute top-1/4 left-1/6 w-32 h-32 bg-primary/20 rounded-full blur-xl animate-float"></div>
         <div className="absolute bottom-1/3 right-1/4 w-24 h-24 bg-secondary/30 rounded-full blur-lg animate-pulse"></div>
         <div className="absolute top-1/2 right-1/6 w-16 h-16 bg-accent/40 rounded-full blur-md animate-bounce"></div>
@@ -22,17 +22,17 @@ export default function Education() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl lg:text-6xl font-bold mb-6">
+          <h2 className="text-4xl lg:text-6xl font-bold mb-6" id="education-title">
             <span className="gradient-text">{educationData.title}</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto" id="education-subtitle">
             {educationData.subtitle}
           </p>
         </motion.div>
 
         <div className="max-w-6xl mx-auto">
           {/* Desktop Timeline */}
-          <div className="hidden md:block">
+          <div className="hidden md:block" role="main" aria-label="Education timeline">
             {/* Timeline line */}
             <motion.div 
               className="absolute left-1/2 transform -translate-x-px h-full w-0.5 bg-gradient-to-b from-primary via-secondary to-accent"
@@ -44,6 +44,7 @@ export default function Education() {
                 ]
               }}
               transition={{ duration: 2, repeat: Infinity }}
+              aria-hidden="true"
             />
             
             {educationData.items.map((edu, index) => (
@@ -57,6 +58,9 @@ export default function Education() {
                 className={`mb-16 flex items-center ${
                   index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'
                 }`}
+                role="article"
+                aria-labelledby={`edu-degree-${index}`}
+                id={`education-item-${index}`}
               >
                 {/* Content */}
                 <div className={`w-5/12 ${index % 2 === 0 ? 'pr-8' : 'pl-8'}`}>
@@ -68,26 +72,27 @@ export default function Education() {
                     className="bg-card/80 backdrop-blur-sm border border-primary/20 rounded-xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300"
                   >
                     <div className="flex justify-between items-start mb-4">
-                      <span className="px-3 py-1 bg-primary/20 text-primary rounded-full text-sm font-medium">
+                      <span className="px-3 py-1 bg-primary/20 text-primary rounded-full text-sm font-medium" id={`edu-year-${index}`}>
                         {edu.year}
                       </span>
-                      <span className="text-sm text-muted-foreground">{edu.period}</span>
+                      <span className="text-sm text-muted-foreground" id={`edu-period-${index}`}>{edu.period}</span>
                     </div>
                     
-                    <h3 className="text-xl font-bold mb-2 gradient-text">{edu.degree}</h3>
-                    <p className="text-muted-foreground font-medium mb-1">{edu.school}</p>
+                    <h3 className="text-xl font-bold mb-2 gradient-text" id={`edu-degree-${index}`}>{edu.degree}</h3>
+                    <p className="text-muted-foreground font-medium mb-1" id={`edu-school-${index}`}>{edu.school}</p>
                     <div className="flex items-center text-muted-foreground text-sm mb-4">
-                      <MapPin className="w-4 h-4 mr-2" />
-                      <span>{edu.location}</span>
+                      <MapPin className="w-4 h-4 mr-2" aria-hidden="true" />
+                      <span id={`edu-location-${index}`}>{edu.location}</span>
                     </div>
                     
                     <div className="space-y-3">
-                      <h4 className="text-sm font-semibold text-primary">Relevant Courses:</h4>
-                      <div className="flex flex-wrap gap-2">
+                      <h4 className="text-sm font-semibold text-primary" id={`edu-courses-title-${index}`}>Relevant Courses:</h4>
+                      <div className="flex flex-wrap gap-2" role="list" aria-labelledby={`edu-courses-title-${index}`}>
                         {edu.courses.map((course, courseIndex) => (
                           <span
                             key={courseIndex}
                             className="px-3 py-1 bg-gradient-to-r from-primary/20 to-secondary/20 text-primary rounded-full text-xs font-medium border border-primary/30 hover:from-primary/30 hover:to-secondary/30 transition-all duration-200"
+                            role="listitem"
                           >
                             {course}
                           </span>
@@ -102,6 +107,7 @@ export default function Education() {
                   <motion.div
                     whileHover={{ scale: 1.2 }}
                     className="w-4 h-4 bg-primary rounded-full border-4 border-background shadow-lg"
+                    aria-hidden="true"
                   />
                 </div>
 
@@ -112,7 +118,7 @@ export default function Education() {
           </div>
 
           {/* Mobile Timeline */}
-          <div className="md:hidden space-y-6">
+          <div className="md:hidden space-y-6" role="main" aria-label="Education list">
             {educationData.items.map((edu, index) => (
               <motion.div
                 key={index}
@@ -121,25 +127,29 @@ export default function Education() {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
                 className="bg-card/80 backdrop-blur-sm border border-primary/20 rounded-xl p-6 shadow-lg"
+                role="article"
+                aria-labelledby={`mobile-edu-degree-${index}`}
+                id={`mobile-education-item-${index}`}
               >
                 <div className="flex justify-between items-start mb-4">
-                  <span className="px-3 py-1 bg-primary/20 text-primary rounded-full text-sm font-medium">
+                  <span className="px-3 py-1 bg-primary/20 text-primary rounded-full text-sm font-medium" id={`mobile-edu-year-${index}`}>
                     {edu.year}
                   </span>
-                  <span className="text-sm text-muted-foreground">{edu.period}</span>
+                  <span className="text-sm text-muted-foreground" id={`mobile-edu-period-${index}`}>{edu.period}</span>
                 </div>
                 
-                <h3 className="text-xl font-bold mb-2 gradient-text">{edu.degree}</h3>
-                <p className="text-muted-foreground font-medium mb-1">{edu.school}</p>
-                <p className="text-muted-foreground text-sm mb-4">{edu.location}</p>
+                <h3 className="text-xl font-bold mb-2 gradient-text" id={`mobile-edu-degree-${index}`}>{edu.degree}</h3>
+                <p className="text-muted-foreground font-medium mb-1" id={`mobile-edu-school-${index}`}>{edu.school}</p>
+                <p className="text-muted-foreground text-sm mb-4" id={`mobile-edu-location-${index}`}>{edu.location}</p>
                 
                 <div className="space-y-3">
-                  <h4 className="text-sm font-semibold text-primary">Relevant Courses:</h4>
-                  <div className="flex flex-wrap gap-2">
+                  <h4 className="text-sm font-semibold text-primary" id={`mobile-edu-courses-title-${index}`}>Relevant Courses:</h4>
+                  <div className="flex flex-wrap gap-2" role="list" aria-labelledby={`mobile-edu-courses-title-${index}`}>
                     {edu.courses.map((course, courseIndex) => (
                       <span
                         key={courseIndex}
                         className="px-3 py-1 bg-gradient-to-r from-primary/20 to-secondary/20 text-primary rounded-full text-xs font-medium border border-primary/30 hover:from-primary/30 hover:to-secondary/30 transition-all duration-200"
+                        role="listitem"
                       >
                         {course}
                       </span>

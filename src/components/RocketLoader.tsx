@@ -9,7 +9,7 @@ const RocketLoader = () => {
   const { theme } = useTheme();
 
   useEffect(() => {
-    fetch('src/Animation - 1750634484642.json')
+    fetch('/animations/loader-animation.json')
       .then(response => response.json())
       .then(data => setAnimationData(data))
       .catch(error => console.error('Error loading animation:', error));

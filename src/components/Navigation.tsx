@@ -28,8 +28,15 @@ const MenuOverlay = ({ onClose }: { onClose: () => void }) => {
       exit: { y: '100%', transition: { duration: 0.2 } },
   };
 
+  const handleKeyDown = (e: React.KeyboardEvent, href: string) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      scrollToSection(href);
+    }
+  };
+
   return (
-    <div className="fixed inset-0 z-40" onClick={onClose}>
+    <div className="fixed inset-0 z-40" onClick={onClose} role="dialog" aria-modal="true" aria-label="Navigation menu">
       <motion.div
           variants={variants}
           initial="hidden"
@@ -37,19 +44,30 @@ const MenuOverlay = ({ onClose }: { onClose: () => void }) => {
           exit="exit"
           className="fixed bottom-0 left-0 right-0 h-[35vh] bg-background/90 backdrop-blur-lg rounded-t-3xl shadow-2xl"
           onClick={(e) => e.stopPropagation()}
+          role="document"
       >
           <div className="relative h-full">
-              <button onClick={onClose} className="absolute top-4 right-4 text-muted-foreground">
-                  <X size={24}/>
+              <button 
+                onClick={onClose} 
+                className="absolute top-4 right-4 text-muted-foreground"
+                aria-label="Close navigation menu"
+                id="close-menu-button"
+              >
+                  <X size={24} aria-hidden="true"/>
               </button>
-              <div className="grid grid-cols-3 gap-y-8 p-8 pt-12">
+              <div className="grid grid-cols-3 gap-y-8 p-8 pt-12" role="menu">
                   {navItems.map((item) => (
                       <motion.button
                           key={item.name}
                           onClick={() => scrollToSection(item.href)}
+                          onKeyDown={(e) => handleKeyDown(e, item.href)}
                           className="flex flex-col items-center justify-center gap-2 text-foreground"
                           whileHover={{ scale: 1.1, color: 'hsl(var(--primary))' }}
                           whileTap={{ scale: 0.95 }}
+                          role="menuitem"
+                          tabIndex={0}
+                          aria-label={`Navigate to ${item.name} section`}
+                          id={`mobile-nav-${item.name.toLowerCase()}`}
                       >
                           {item.icon}
                           <span className="text-sm font-medium">{item.name}</span>
@@ -124,9 +142,11 @@ export default function Navigation() {
             ? 'bg-white/10' 
               : 'bg-white/30'
         }`}
+        role="navigation"
+        aria-label="Main navigation"
       >
           <div className="flex items-center justify-end md:justify-center h-12 px-2">
-            <div className="hidden md:flex items-center space-x-4 lg:space-x-6">
+            <div className="hidden md:flex items-center space-x-4 lg:space-x-6" role="menubar" aria-label="Desktop navigation">
               {desktopNavItems.map((item) => {
                 const isActive = activeSection === item.href.substring(1);
                 return (
@@ -140,6 +160,11 @@ export default function Navigation() {
                         ? 'text-primary' 
                         : 'text-foreground hover:text-primary'
                     }`}
+                    role="menuitem"
+                    tabIndex={0}
+                    aria-label={`Navigate to ${item.name} section`}
+                    aria-current={isActive ? 'page' : undefined}
+                    id={`desktop-nav-${item.name.toLowerCase()}`}
                 >
                   {item.name}
                     {isActive && (
@@ -149,6 +174,7 @@ export default function Navigation() {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ duration: 0.3 }}
+                        aria-hidden="true"
                       />
                     )}
                 </motion.button>
@@ -160,8 +186,12 @@ export default function Navigation() {
               whileTap={{ scale: 0.95 }}
               className="md:hidden p-2"
               onClick={() => setIsMenuOpen(true)}
+              aria-label="Open navigation menu"
+              aria-expanded={isMenuOpen}
+              aria-controls="mobile-navigation-menu"
+              id="mobile-menu-button"
             >
-              <LayoutGrid size={24} className="text-foreground" />
+              <LayoutGrid size={24} className="text-foreground" aria-hidden="true" />
             </motion.button>
           </div>
         </motion.nav>

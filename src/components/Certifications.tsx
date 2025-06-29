@@ -6,9 +6,9 @@ export default function Certifications() {
   const certificationsData = getSectionData('certifications');
 
   return (
-    <section id="certifications" className="py-20 bg-gradient-to-r from-accent/5 via-background to-primary/5 relative overflow-hidden">
+    <section id="certifications" className="py-20 bg-gradient-to-r from-accent/5 via-background to-primary/5 relative overflow-hidden" role="region" aria-label="Certifications section">
       {/* Background elements */}
-      <div className="absolute inset-0 pointer-events-none">
+      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
         <div className="absolute top-1/4 right-1/5 w-32 h-32 bg-accent/20 rounded-full blur-xl animate-pulse"></div>
         <div className="absolute bottom-1/3 left-1/4 w-24 h-24 bg-primary/30 rounded-full blur-lg animate-float"></div>
       </div>
@@ -21,15 +21,15 @@ export default function Certifications() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl lg:text-6xl font-bold mb-6">
+          <h2 className="text-4xl lg:text-6xl font-bold mb-6" id="certifications-title">
             <span className="gradient-text">{certificationsData.title}</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto" id="certifications-subtitle">
             {certificationsData.subtitle}
           </p>
         </motion.div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-2 gap-8 max-w-6xl mx-auto" role="main" aria-label="Certifications grid">
           {certificationsData.items.map((cert, index) => (
             <motion.div
               key={cert.title}
@@ -43,11 +43,15 @@ export default function Certifications() {
                 boxShadow: "0 20px 40px rgba(139, 92, 246, 0.3)"
               }}
               className="bg-card/80 backdrop-blur-sm border border-primary/20 rounded-xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 group relative overflow-hidden"
+              role="article"
+              aria-labelledby={`cert-title-${index}`}
+              id={`certification-card-${index}`}
             >
               {/* Background gradient */}
               <motion.div
                 className={`absolute inset-0 bg-gradient-to-br ${cert.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300`}
                 initial={false}
+                aria-hidden="true"
               />
 
               <div className="relative z-10">
@@ -57,12 +61,13 @@ export default function Certifications() {
                       whileHover={{ rotate: 360, scale: 1.2 }}
                       transition={{ duration: 0.5 }}
                       className="w-12 h-12 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center mr-4"
+                      aria-hidden="true"
                     >
                       <Award className="w-6 h-6 text-white" />
                     </motion.div>
                     <div>
-                      <h3 className="text-xl font-bold gradient-text mb-1">{cert.title}</h3>
-                      <p className="text-muted-foreground font-medium">{cert.issuer}</p>
+                      <h3 className="text-xl font-bold gradient-text mb-1" id={`cert-title-${index}`}>{cert.title}</h3>
+                      <p className="text-muted-foreground font-medium" id={`cert-issuer-${index}`}>{cert.issuer}</p>
                     </div>
                   </div>
                   
@@ -71,28 +76,32 @@ export default function Certifications() {
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
                     className="p-2 bg-primary/10 hover:bg-primary/20 rounded-lg transition-colors"
+                    aria-label={`View ${cert.title} certification`}
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
-                    <ExternalLink className="w-4 h-4 text-primary" />
+                    <ExternalLink className="w-4 h-4 text-primary" aria-hidden="true" />
                   </motion.a>
                 </div>
 
                 <div className="flex items-center text-sm text-muted-foreground mb-4">
-                  <Calendar className="w-4 h-4 mr-2" />
-                  <span>{cert.date}</span>
-                  <span className="mx-2">•</span>
-                  <span className="text-xs">ID: {cert.credentialId}</span>
+                  <Calendar className="w-4 h-4 mr-2" aria-hidden="true" />
+                  <span id={`cert-date-${index}`}>{cert.date}</span>
+                  <span className="mx-2" aria-hidden="true">•</span>
+                  <span className="text-xs" id={`cert-id-${index}`}>ID: {cert.credentialId}</span>
                 </div>
 
-                <p className="text-muted-foreground mb-4 leading-relaxed text-sm">
+                <p className="text-muted-foreground mb-4 leading-relaxed text-sm" id={`cert-description-${index}`}>
                   {cert.description}
                 </p>
 
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-2" role="list" aria-label="Skills covered">
                   {cert.skills.map((skill, skillIndex) => (
                     <motion.span
                       key={skillIndex}
                       whileHover={{ scale: 1.05, y: -2 }}
                       className="px-3 py-1 bg-gradient-to-r from-primary/20 to-secondary/20 text-primary rounded-full text-xs font-medium border border-primary/30"
+                      role="listitem"
                     >
                       {skill}
                     </motion.span>

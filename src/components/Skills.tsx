@@ -80,21 +80,29 @@ const MarqueeRow = ({ skills, direction = 'left' }: { skills: any[], direction?:
   };
 
   return (
-    <div className={`flex ${animationClass} [animation-play-state:running] group-hover:[animation-play-state:paused]`}>
+    <div 
+      className={`flex ${animationClass} [animation-play-state:running] group-hover:[animation-play-state:paused]`}
+      role="list"
+      aria-label={`Skills row moving ${direction}`}
+    >
       {[...skills, ...skills].map((skill, index) => {
         const IconComponent = iconMap[skill.icon];
         const iconColor = getIconColor(skill.name);
         
         return (
-          <div key={`${skill.name}-${index}`} className="flex-shrink-0 w-48 mx-4">
+          <div key={`${skill.name}-${index}`} className="flex-shrink-0 w-48 mx-4" role="listitem">
             <motion.div
               whileHover={{ 
                 y: -5,
                 boxShadow: "0 20px 40px rgba(139, 92, 246, 0.3)",
               }}
               className="group/item relative p-6 bg-card/80 backdrop-blur-sm border border-primary/20 rounded-xl flex items-center justify-center space-x-4 cursor-pointer overflow-hidden h-24 shadow-lg hover:shadow-2xl transition-all duration-300"
+              tabIndex={0}
+              role="button"
+              aria-label={`${skill.name} skill card`}
+              id={`skill-card-${skill.name.toLowerCase().replace(/\s+/g, '-')}-${index}`}
             >
-              <div className="text-4xl transition-colors duration-300">
+              <div className="text-4xl transition-colors duration-300" aria-hidden="true">
                 <IconComponent style={{ color: iconColor, fill: iconColor }} />
               </div>
               <h3 className="text-xl font-semibold text-muted-foreground group-hover/item:text-primary transition-colors duration-300">
@@ -126,21 +134,21 @@ export default function Skills() {
 
   if (isLoading) {
     return (
-      <section id="skills" className="py-20 overflow-hidden">
+      <section id="skills" className="py-20 overflow-hidden" role="region" aria-label="Skills section">
         <div className="container mx-auto px-4 mb-16 text-center">
-          <h2 className="text-4xl lg:text-5xl font-bold mb-6">
+          <h2 className="text-4xl lg:text-5xl font-bold mb-6" id="skills-title">
             {skillsData.title.split(' ').slice(0, -1).join(' ')} <span className="gradient-text">{skillsData.title.split(' ').slice(-1)[0]}</span>
           </h2>
         </div>
-        <div className="flex items-center justify-center min-h-[400px]">
-          <Spinner size="lg" />
+        <div className="flex items-center justify-center min-h-[400px]" role="status" aria-live="polite">
+          <Spinner size="lg" aria-label="Loading skills section content" />
         </div>
       </section>
     );
   }
 
   return (
-    <section id="skills" className="py-20 overflow-hidden">
+    <section id="skills" className="py-20 overflow-hidden" role="region" aria-label="Skills section">
       <div className="container mx-auto px-4 mb-16 text-center">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -148,16 +156,16 @@ export default function Skills() {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-4xl lg:text-5xl font-bold mb-6">
+          <h2 className="text-4xl lg:text-5xl font-bold mb-6" id="skills-title-loaded">
             {skillsData.title.split(' ').slice(0, -1).join(' ')} <span className="gradient-text">{skillsData.title.split(' ').slice(-1)[0]}</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto" id="skills-subtitle">
             {skillsData.subtitle}
           </p>
         </motion.div>
       </div>
 
-      <div className="space-y-8 group">
+      <div className="space-y-8 group" role="main" aria-label="Skills showcase">
         <div className="flex">
           <MarqueeRow skills={firstRow} direction="left" />
         </div>

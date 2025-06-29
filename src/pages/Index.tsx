@@ -58,7 +58,7 @@ const Index = () => {
       <footer className="py-8 bg-gradient-to-r from-muted/50 via-muted/30 to-muted/50 text-center relative z-10">
         <div className="container mx-auto px-4">
           <p className="text-muted-foreground">
-            © 2024 Pavan Vanjre Ravindranath. Built with React, Three.js, and lots of ☕
+            © 2024 Pavan Vanjre Ravindranath. Built with React, Tailwind CSS, Three.js and lots of ☕
           </p>
         </div>
       </footer>
