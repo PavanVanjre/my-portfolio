@@ -257,3 +257,13 @@
 .animate-wavy-glow {
   animation: wavyGlow 6s ease-in-out infinite;
 }
+
+/* Hide scrollbar for projects slider */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

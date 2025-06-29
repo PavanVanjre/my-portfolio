@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { Github, ExternalLink, ChevronDown, ChevronUp } from 'lucide-react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+import { Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import { getSectionData } from '@/lib/data';
@@ -53,14 +53,13 @@ export default function Projects() {
   }
 
   return (
-    <section className="py-20" id="projects" role="region" aria-label="Projects section">
-      <div className="container mx-auto px-4">
+    <section className="py-20 bg-muted/30" id="projects" role="region" aria-label="Projects section">
+      <div className="text-center mb-16">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
         >
           <h2 className="text-4xl lg:text-5xl font-bold mb-6" id="projects-title">
             {projectsData.title.split(' ').slice(0, -1).join(' ')} <span className="gradient-text">{projectsData.title.split(' ').slice(-1)[0]}</span>
@@ -69,28 +68,20 @@ export default function Projects() {
             {projectsData.subtitle}
           </p>
         </motion.div>
+      </div>
 
         <Swiper
-          modules={[Navigation, Pagination, Autoplay]}
-          spaceBetween={30}
-          slidesPerView={1}
+          modules={[Navigation]}
           navigation
-          pagination={{ clickable: true }}
-          autoplay={{
-            delay: 5000,
-            disableOnInteraction: false,
-          }}
+          spaceBetween={5}
+          slidesPerView={1.1}
           breakpoints={{
-            640: {
-              slidesPerView: 2,
-              spaceBetween: 20,
-            },
-            1024: {
-              slidesPerView: 3,
-              spaceBetween: 30,
-            },
+            640: { slidesPerView: 2.1, spaceBetween: 16 },
+            768: { slidesPerView: 2.1, spaceBetween: 24 },
+            1024: { slidesPerView: 2.8, spaceBetween: 32 },
+            1440: { slidesPerView: 4.1, spaceBetween: 40 },
           }}
-          className="projects-swiper hide-scrollbar"
+          className="!overflow-visible projects-swiper"
           style={{ paddingLeft: 0, paddingRight: 0 }}
           role="region"
           aria-label="Projects carousel"
@@ -235,7 +226,7 @@ export default function Projects() {
             );
           })}
         </Swiper>
-      </div>
+
     </section>
   );
 }

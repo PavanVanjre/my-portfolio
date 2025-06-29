@@ -129,4 +129,15 @@ export default {
 		}
 	},
 	plugins: [require("tailwindcss-animate")],
+	safelist: [
+		'min-w-[320px]',
+		'max-w-sm',
+		'sm:min-w-[380px]',
+		'sm:max-w-md',
+		'min-w-[300px]',
+		'max-w-xs',
+		'sm:min-w-[360px]',
+		'sm:max-w-sm',
+		// add any other dynamic classes you use for card widths
+	],
 } satisfies Config;
