@@ -2,6 +2,7 @@ import { motion, AnimatePresence, Variants } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import { Home, User, Briefcase, Star, FolderGit2, Send, X, LayoutGrid, Award, GraduationCap } from 'lucide-react';
 import { useTheme } from '@/contexts/ThemeContext';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const navItems = [
   { name: 'Home', href: '#home', icon: <Home size={24} /> },
@@ -65,11 +66,15 @@ export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('');
   const { theme } = useTheme();
+  const isMobile = useIsMobile();
 
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
     element?.scrollIntoView({ behavior: 'smooth' });
   };
+
+  // Filter nav items for desktop (remove About)
+  const desktopNavItems = navItems.filter(item => item.name !== 'About' || isMobile);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -121,8 +126,8 @@ export default function Navigation() {
         }`}
       >
           <div className="flex items-center justify-end md:justify-center h-12 px-2">
-            <div className="hidden md:flex items-center space-x-6">
-              {navItems.map((item) => {
+            <div className="hidden md:flex items-center space-x-4 lg:space-x-6">
+              {desktopNavItems.map((item) => {
                 const isActive = activeSection === item.href.substring(1);
                 return (
                 <motion.button
@@ -130,7 +135,7 @@ export default function Navigation() {
                   onClick={() => scrollToSection(item.href)}
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.95 }}
-                    className={`relative text-xl font-medium transition-colors ${
+                    className={`relative text-lg lg:text-xl font-medium transition-colors ${
                       isActive 
                         ? 'text-primary' 
                         : 'text-foreground hover:text-primary'

@@ -52,8 +52,8 @@ export default function Projects() {
         slidesPerView={1.1}
         breakpoints={{
           640: { slidesPerView: 2.1, spaceBetween: 16 },
-          768: { slidesPerView: 2.5, spaceBetween: 24 },
-          1024: { slidesPerView: 2.8, spaceBetween: 32 },
+          768: { slidesPerView: 2, spaceBetween: 24 },
+          1024: { slidesPerView: 2, spaceBetween: 32 },
           1440: { slidesPerView: 4.1, spaceBetween: 40 },
         }}
         className="!overflow-visible projects-swiper"
