@@ -2,11 +2,8 @@ import { motion, Variants } from 'framer-motion';
 import { Github, Linkedin, Mail, Award, Briefcase, Code } from 'lucide-react';
 import { TypeAnimation } from 'react-type-animation';
 import { getSectionData } from '@/lib/data';
-import { useIsMobile } from '@/hooks/use-mobile';
-import { memo, lazy, Suspense } from 'react';
-
-// Lazy load heavy components
-const AnimatedCube = lazy(() => import('./AnimatedCube'));
+import { useIsExtraLarge } from '@/hooks/use-mobile';
+import { memo } from 'react';
 
 interface SocialLink {
   name: string;
@@ -97,6 +94,9 @@ const ActionButtons = memo(({ heroData }: { heroData: HeroData }) => {
         className="px-8 py-3 border border-border rounded-lg font-semibold hover:bg-accent transition-all duration-300 text-foreground dark:text-primary"
         id="resume-button"
         aria-label={heroData.buttons.secondary}
+        onClick={() => {
+          window.open('/documents/resume.pdf', '_blank', 'noopener,noreferrer');
+        }}
       >
         {heroData.buttons.secondary}
       </motion.button>
@@ -109,7 +109,7 @@ ActionButtons.displayName = 'ActionButtons';
 const Hero = memo(() => {
   const heroData = getSectionData('hero');
   const aboutData = getSectionData('about');
-  const isMobile = useIsMobile();
+  const isExtraLarge = useIsExtraLarge();
 
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
@@ -133,8 +133,8 @@ const Hero = memo(() => {
     },
   };
 
-  // Mobile and Tablet layout (original)
-  if (isMobile) {
+  // Default layout for all screens except extra large
+  if (!isExtraLarge) {
     return (
       <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden px-4" role="banner" aria-label="Hero section">
         <div className="flex items-center gap-12">
@@ -195,7 +195,7 @@ const Hero = memo(() => {
     );
   }
 
-  // Desktop/Tablet layout (combined Hero + About)
+  // Extra large screen layout (combined Hero + About)
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden px-4" role="banner" aria-label="Hero section">
       <div className="container mx-auto ">

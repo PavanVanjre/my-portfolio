@@ -1,50 +1,79 @@
 # My Portfolio
 
-A modern, interactive portfolio website built with React, TypeScript, and Vite. Features dark/light theme, smooth animations, and responsive design.
+[![Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-000?logo=vercel)](https://pavan-vanjre.vercel.app/) [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-## Features
+## 🚀 Live Demo
 
-- 🎨 **Modern UI/UX** - Beautiful design with smooth animations
-- 🌙 **Dark/Light Theme** - Toggle between themes
-- 📱 **Responsive Design** - Works perfectly on mobile, tablet, and desktop
-- ⚡ **Fast Performance** - Built with Vite for optimal performance
-- 🎯 **Interactive Elements** - Custom cursor, floating elements, and more
-- 📧 **Contact Form** - Integrated with EmailJS for seamless communication
+👉 **Check out the deployed site here:** [https://pavan-vanjre.vercel.app/](https://pavan-vanjre.vercel.app/)
 
-## Tech Stack
+---
 
-- **Frontend**: React + TypeScript + Vite
-- **Styling**: Tailwind CSS + shadcn/ui
-- **Animations**: Framer Motion + Three.js
-- **Email Service**: EmailJS
-- **Icons**: Lucide React
+A modern, interactive, and blazing-fast portfolio website built with **React**, **TypeScript**, and **Vite**. Showcases your work, skills, and experience with beautiful animations, a custom theme, and a fully responsive design.
 
-## Getting Started
+---
+
+## ✨ Features
+
+- 🎨 **Modern UI/UX** — Clean, elegant design with smooth transitions
+- 🌗 **Dark/Light Theme** — Instantly toggle between light and dark modes
+- 📱 **Fully Responsive** — Looks great on mobile, tablet, and desktop
+- ⚡ **Lightning Fast** — Powered by Vite for instant load times
+- 🖱️ **Interactive Elements** — Custom cursor, floating shapes, animated backgrounds
+- 📝 **Dynamic Content** — Easily update your projects, skills, and more
+- 📧 **Contact Form** — Integrated with EmailJS for direct communication
+- 🛡️ **Accessible** — ARIA labels and keyboard navigation support
+
+---
+
+## 🛠️ Tech Stack
+
+- **Frontend:** React, TypeScript, Vite
+- **Styling:** Tailwind CSS, shadcn/ui
+- **Animations:** Framer Motion, Three.js
+- **Email Service:** EmailJS
+- **Icons:** Lucide React
+
+---
+
+## 📦  Packages & Versions
+
+| Package            | Version    |
+|--------------------|-----------|
+| react              | ^18.3.1    |
+| react-dom          | ^18.3.1    |
+| typescript         | ^5.5.3     |
+| vite               | ^5.4.1     |
+| tailwindcss        | ^3.4.11    |
+| framer-motion      | ^12.16.0   |
+| @emailjs/browser   | ^4.4.1     |
+| lucide-react       | ^0.522.0   |
+| three              | ^0.177.0   |
+
+---
+
+## 🛠️ Getting Started
 
 ### Prerequisites
-
 - Node.js (v16 or higher)
 - npm or yarn
 
 ### Installation
 
-1. Clone the repository:
 ```bash
 git clone <repository-url>
 cd my-portfolio
-```
-
-2. Install dependencies:
-```bash
 npm install
 ```
 
-3. Set up environment variables:
+### Environment Variables
+
+Copy the example file and add your EmailJS credentials:
+
 ```bash
 cp .env.example .env
 ```
 
-4. Configure your EmailJS credentials in the `.env` file:
+Edit `.env`:
 ```env
 VITE_EMAILJS_SERVICE_ID=your_service_id_here
 VITE_EMAILJS_TEMPLATE_ID=your_template_id_here
@@ -52,8 +81,7 @@ VITE_EMAILJS_PUBLIC_KEY=your_public_key_here
 VITE_CONTACT_EMAIL=your_email_here
 ```
 
-### EmailJS Setup
-
+#### EmailJS Setup
 1. Sign up at [EmailJS](https://www.emailjs.com/)
 2. Create an email service (Gmail, Outlook, etc.)
 3. Create an email template
@@ -66,7 +94,7 @@ VITE_CONTACT_EMAIL=your_email_here
 npm run dev
 ```
 
-Open [http://localhost:5173](http://localhost:5173) to view it in the browser.
+Open [http://localhost:8080](http://localhost:8080) to view it in your browser.
 
 ### Building for Production
 
@@ -74,18 +102,9 @@ Open [http://localhost:5173](http://localhost:5173) to view it in the browser.
 npm run build
 ```
 
-## Environment Variables
+---
 
-The following environment variables are required:
-
-| Variable | Description |
-|----------|-------------|
-| `VITE_EMAILJS_SERVICE_ID` | Your EmailJS service ID |
-| `VITE_EMAILJS_TEMPLATE_ID` | Your EmailJS template ID |
-| `VITE_EMAILJS_PUBLIC_KEY` | Your EmailJS public key |
-| `VITE_CONTACT_EMAIL` | Your contact email address |
-
-## Project Structure
+## 📁 Project Structure
 
 ```
 src/
@@ -99,27 +118,21 @@ src/
 └── assets/             # Static assets
 ```
 
-## Contributing
+---
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+## 🙏 Credits
 
-## Credits
+- **[LovableAI](https://lovable.ai/)** — AI-powered development assistance
+- **[Cursor AI](https://cursor.sh/)** — AI-enhanced code editor
 
-This project was developed with the assistance of:
+---
 
-- **[LovableAI](https://lovable.ai/)** - AI-powered development assistance
-- **[Cursor AI](https://cursor.sh/)** - AI-enhanced code editor
+## 📄 License
 
-## License
+This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+---
 
-## Contact
+## 📬 Contact
 
-Pavan Vanjre Ravindranath - [pavan.vanjre98@gmail.com](mailto:pavan.vanjre98@gmail.com)
-
-Project Link: [https://github.com/yourusername/my-portfolio](https://github.com/yourusername/my-portfolio)
+Pavan Vanjre Ravindranath — [pavan.vanjre98@gmail.com](mailto:pavan.vanjre98@gmail.com)
