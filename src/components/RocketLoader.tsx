@@ -32,8 +32,23 @@ const RocketLoader = ({ flyAway = false, onFlyAwayComplete }: { flyAway?: boolea
       <div className={`min-h-screen relative overflow-hidden ${theme === 'light' ? 'bg-white' : ''}`}>
         {theme === 'light' ? <ParticleBackground /> : <SpaceBackground />}
         <div className="flex items-center justify-center min-h-screen relative z-10">
-          <div className="w-64 h-64 flex items-center justify-center">
-            <div className="text-muted-foreground">Loading...</div>
+          <div className="w-64 h-64 flex flex-col items-center justify-center gap-6">
+            {/* Animated Spinner */}
+            <motion.div
+              className="w-16 h-16 border-4 border-primary border-t-transparent rounded-full"
+              animate={{ rotate: 360 }}
+              transition={{ repeat: Infinity, duration: 1, ease: 'linear' }}
+              style={{ borderTopColor: 'hsl(var(--primary))' }}
+            />
+            {/* Styled Loading Text */}
+            <motion.div
+              className="text-2xl font-bold text-primary drop-shadow-lg tracking-wide"
+              initial={{ opacity: 0.5 }}
+              animate={{ opacity: [0.5, 1, 0.5] }}
+              transition={{ repeat: Infinity, duration: 1.5, ease: 'easeInOut' }}
+            >
+              Preparing Launch...
+            </motion.div>
           </div>
         </div>
       </div>

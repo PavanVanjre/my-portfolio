@@ -13,11 +13,11 @@ import SpaceBackground from '@/components/SpaceBackground';
 import Navigation from '@/components/Navigation';
 import FloatingActions from '@/components/FloatingActions';
 import { useTheme } from '@/contexts/ThemeContext';
-import { useIsMobile } from '@/hooks/use-mobile';
+import { useIsExtraLarge } from '@/hooks/use-mobile';
 
 const Index = () => {
   const { theme } = useTheme();
-  const isMobile = useIsMobile();
+  const isExtraLarge = useIsExtraLarge();
 
   return (
     <div className={`min-h-screen relative overflow-hidden ${theme === 'light' ? 'bg-white' : ''}`}>
@@ -25,8 +25,8 @@ const Index = () => {
       <div id="home" className="relative z-10">
         <Hero />
       </div>
-      {/* Show About section on mobile and tablet since they use the same layout */}
-      {isMobile && (
+      {/* Show About section for all screens except extra large (where it's combined with Hero) */}
+      {!isExtraLarge && (
         <div id="about" className="relative z-10">
           <About />
         </div>

@@ -2,6 +2,7 @@ import { motion, AnimatePresence, Variants } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import { Home, User, Briefcase, Star, FolderGit2, Send, X, LayoutGrid, Award, GraduationCap } from 'lucide-react';
 import { useTheme } from '@/contexts/ThemeContext';
+import { useIsExtraLarge } from '@/hooks/use-mobile';
 
 const navItems = [
   { name: 'Home', href: '#home', icon: <Home size={24} /> },
@@ -83,14 +84,17 @@ export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('');
   const { theme } = useTheme();
+  const isExtraLarge = useIsExtraLarge();
 
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
     element?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  // Filter nav items for desktop (remove About)
-  const desktopNavItems = navItems.filter(item => item.name !== 'About');
+  // Show About in desktop nav only if About section is visible (not extra large)
+  const desktopNavItems = isExtraLarge
+    ? navItems.filter(item => item.name !== 'About')
+    : navItems;
 
   useEffect(() => {
     const handleScroll = () => {
